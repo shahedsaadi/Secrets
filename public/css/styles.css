@@ -1,0 +1,52 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #E8ECEF;
+}
+
+footer {
+  flex-shrink: 0;
+  color: #071952;
+  text-align: center;
+  padding: 10px;
+  margin-top: 90px;
+}
+
+.centered {
+  padding-top: 200px;
+  text-align: center;
+}
+
+.secret-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ADC4CE;
+  color: #071952;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.secret-text {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 1.5rem;
+}
+
+.delete-form {
+  margin: 0;
+}
+
+.btn-sm {
+  margin: 5px 0;
+  margin-right: 30px;
+  background-color: #164863;
+  border: hidden;
+}
+
+
