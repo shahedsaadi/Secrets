@@ -53,8 +53,8 @@ app.get("/register", (req, res) => {
 
 //Secrets Route:Checks if the user is authenticated using Passport's isAuthenticated() method.
 app.get("/secrets", async (req, res) => {
-  if (req.isAuthenticated()) {  //Checks if the user is authenticated.
-    try {                       //retrieve all secrets from the secrets_text table.
+  if (req.isAuthenticated()) {      //Checks if the user is authenticated.
+    try {                           //retrieve all secrets from the secrets_text table.
       const result = await db.query("SELECT id, secret FROM secrets_text");
       const secrets = result.rows;  // Keep the structure as {id, secret}
       res.render("secrets.ejs", { secrets: secrets });  // Passes the secrets array to the secrets.ejs template for rendering.
@@ -130,7 +130,7 @@ app.post("/login", (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.render("login.ejs", { errorMessage: "Incorrect password" });
+      return res.render("login.ejs", { errorMessage: info.message });
     }
     req.logIn(user, (err) => {
       if (err) {
@@ -194,19 +194,17 @@ passport.use("local",
             return cb(err);
           } else {
             if (valid) {  //valid = true, valid is boolean
-              //Passed password check
               return cb(null, user); //null (to indicate that there's no error) and data want to store:user
             } else {
-              //Did not pass password check
-              return cb(null, false);
+              return cb(null, false, { message: "Incorrect password" });
             }
           }
         });
       } else {
-        return cb("User not found");
+        return cb(null, false, { message: "User not found" });
       }
     } catch (err) {
-      console.log(err);
+      return cb(err);
     }
   })
 );
