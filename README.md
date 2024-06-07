@@ -18,7 +18,7 @@ You can submit your secrets anonymously, ensuring your identity remains complete
 - Click on the link: https://secrets-bq0c.onrender.com/
 
 # To Run The Project:
-- Create your Database you can name it any name, then take the Schema Definition from queries.sql file.
+- Create your Database you can name it any name, then take the Schema Definition from "queries.sql" file.
 - Clone the repository, inside the terminal (git clone https://github.com/shahedsaadi/Secrets.git).
 - Run npm install
 
