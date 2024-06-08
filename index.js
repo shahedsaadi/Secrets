@@ -38,6 +38,14 @@ const db = new Pool({
     rejectUnauthorized: false,
   },
 });
+db.connect()
+.then(() => {
+  console.log('Connected to the database');
+})
+.catch(err => {
+  console.error('Database connection error:', err.stack);
+});
+
 
 app.get("/", (req, res) => {
   res.render("home.ejs");
